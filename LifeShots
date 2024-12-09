@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condividi le tue Foto!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1>Benvenuto su ShareYourPics!</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#messages">Messaggi</a></li>
+                <li><a href="#events">Eventi</a></li>
+                <li><a href="#premium">Premium</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="home">
+    <div class="container">
+        <h2>Condividi le tue foto preferite!</h2>
+        <p>Pubblica foto della tua postazione di gaming, vacanze o qualsiasi cosa tu voglia condividere.</p>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container">
+        <h2>Galleria Foto</h2>
+        <div class="gallery">
+            <div class="photo-item">
+                <img src="gaming.jpg" alt="Postazione gaming">
+                <p>Postazione da Gaming</p>
+            </div>
+            <div class="photo-item">
+                <img src="vacanza.jpg" alt="Vacanza">
+                <p>Vacanza Estate</p>
+            </div>
+            <!-- Aggiungi altre foto qui -->
+        </div>
+    </div>
+</section>
+
+<section id="messages">
+    <div class="container">
+        <h2>Messaggi</h2>
+        <div class="messages-box">
+            <p>Messaggio 1: "Ciao, la tua postazione di gaming è fantastica!"</p>
+            <p>Messaggio 2: "Bellissima la foto della tua vacanza!"</p>
+            <!-- Aggiungi altri messaggi qui -->
+        </div>
+        <textarea placeholder="Scrivi un messaggio..."></textarea>
+        <button>Invia</button>
+    </div>
+</section>
+
+<section id="events">
+    <div class="container">
+        <h2>Eventi</h2>
+        <div class="event">
+            <h3>Evento di Gaming - 15 Dicembre</h3>
+            <p>Partecipa alla nostra sfida di gaming online!</p>
+            <button>Partecipa</button>
+        </div>
+        <!-- Aggiungi altri eventi qui -->
+    </div>
+</section>
+
+<section id="premium">
+    <div class="container">
+        <h2>Versione Premium</h2>
+        <p>Ottieni vantaggi esclusivi con il nostro piano premium: spazio illimitato per le foto, chat avanzate e tanto altro!</p>
+        <button class="premium-btn">Diventa Premium</button>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 ShareYourPics. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
+/* Stili di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: #4CAF50;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #2C3E50;
+    padding: 20px 0;
+    color: white;
+}
+
+header nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    color: #E74C3C;
+}
+
+/* Sezioni */
+section {
+    margin: 40px 0;
+    padding: 20px 0;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Galleria Foto */
+.gallery {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.photo-item {
+    width: 30%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.photo-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Sezione Premium */
+.premium-btn {
+    background-color: #E74C3C;
+    font-size: 18px;
+}
+
+.premium-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Footer */
+footer {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery {
+        flex-direction: column;
+    }
+
+    .photo-item {
+        width: 80%;
+        margin: 10px auto;
+    }
+}
+// Funzione per caricare i messaggi dal localStorage
+function loadMessages() {
+    const messagesBox = document.querySelector('.messages-box');
+    const messages = JSON.parse(localStorage.getItem('messages')) || []; // Recupera i messaggi dal localStorage, se non ci sono, inizializza un array vuoto
+    
+    // Mostra i messaggi nella pagina
+    messages.forEach(message => {
+        const newMessage = document.createElement('p');
+        newMessage.textContent = message;
+        messagesBox.appendChild(newMessage);
+    });
+}
+
+// Funzione per aggiungere un nuovo messaggio
+function addMessage() {
+    const textarea = document.querySelector('textarea');
+    const messagesBox = document.querySelector('.messages-box');
+    
+    if (textarea.value.trim() !== "") {
+        const newMessage = textarea.value.trim();
+        const messages = JSON.parse(localStorage.getItem('messages')) || []; // Recupera i messaggi dal localStorage
+
+        messages.push(newMessage); // Aggiungi il nuovo messaggio all'array
+        localStorage.setItem('messages', JSON.stringify(messages)); // Salva di nuovo i messaggi nel localStorage
+        
+        // Mostra il nuovo messaggio nella pagina
+        const messageElement = document.createElement('p');
+        messageElement.textContent = newMessage;
+        messagesBox.appendChild(messageElement);
+        
+        textarea.value = ""; // Pulisce la casella di testo
+    }
+}
+
+// Carica i messaggi all'avvio
+window.onload = loadMessages;
+
+// Aggiungi un evento al bottone per inviare il messaggio
+document.querySelector('button').addEventListener('click', addMessage);
